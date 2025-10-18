@@ -1,10 +1,10 @@
 # cloudbuild.yaml
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:$SHORT_SHA', '.']
+    args: ['build', '-t', 'us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:v01', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:$SHORT_SHA']
+    args: ['push', 'us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:v01']
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -14,7 +14,7 @@ steps:
       - 'flask-release-$SHORT_SHA'
       - '--delivery-pipeline=flask-pipeline'
       - '--region=us-central1-a'
-      - '--images=flask-app=us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:$SHORT_SHA'
+      - '--images=flask-app=us-central1-a-docker.pkg.dev/mythical-bazaar-470812-n3/GCP-cicd/flask-app:v01'
 
 images:
-  - 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/flask-app:$SHORT_SHA'
+  - 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/flask-app:v01'
