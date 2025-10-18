@@ -1,0 +1,10 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: flask-app
+deploy:
+  cloudrun: {}  # This is ignored by Cloud Deploy, but required syntactically
+manifests:
+  rawYaml:
+    - kubernetes/deployment.yaml
+    - kubernetes/service.yaml
